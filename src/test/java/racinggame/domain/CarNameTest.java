@@ -7,13 +7,13 @@ import racinggame.exception.RacingCarException;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-class CarTest {
+class CarNameTest {
 
     @DisplayName("자동차 이름의 길이는 1~5만 가능하다.")
     @ParameterizedTest
     @ValueSource(strings = {"", "carcar"})
     void given_noValidName_then_throwException(String input) {
-        assertThatThrownBy(() -> Car.of(CarName.of(input)))
+        assertThatThrownBy(() -> CarName.of(input))
                 .isInstanceOf(RacingCarException.class)
                 .hasMessageContaining("[ERROR] 자동차 이름 길이는 1~5 자리 여야 합니다.");
     }

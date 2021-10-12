@@ -1,20 +1,16 @@
 package racinggame.domain;
 
-import racinggame.exception.ErrorCode;
-import racinggame.exception.RacingCarException;
-
 public class Car {
 
-    private String input;
+    private CarName carName;
 
-    public Car(String input) {
-        validate(input);
-        this.input = input;
+    private Car(CarName carName) {
+        this.carName = carName;
     }
 
-    private void validate(String input) {
-        if (input.length() < 1 || input.length() > 5) {
-            throw new RacingCarException(ErrorCode.CAR_NAME_LENGTH_BOUNDARY_ERROR.getMessage());
-        }
+    public static Car of(CarName carName) {
+        return new Car(carName);
     }
+
+
 }
