@@ -2,8 +2,6 @@ package racinggame.domain;
 
 import racinggame.util.ValidUtils;
 
-import java.util.Objects;
-
 public class Car {
     private static final int DEFAULT_POSITION = 0;
 
@@ -24,10 +22,11 @@ public class Car {
         ValidUtils.nullOrEmpty(carName);
     }
 
-    public void move(MovingStrategy movable) {
+    public TryResult move(MovingStrategy movable) {
         if (movable.movable()) {
             this.position = position.move();
         }
+        return TryResult.of(carName, position);
     }
 
     public Position getPosition() {

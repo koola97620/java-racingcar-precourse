@@ -2,10 +2,12 @@ package racinggame.domain;
 
 public class RacingGame {
 
-    private Cars cars;
+    private final Cars cars;
+    private final Results results;
 
     private RacingGame(Cars cars) {
         this.cars = cars;
+        this.results = new Results();
     }
 
     public static RacingGame of(Cars cars) {
@@ -14,8 +16,13 @@ public class RacingGame {
 
     public void raceStart(TryCount tryCount) {
         while (tryCount.availableContinueGame()) {
-            cars.move();
+            TryResults tryResults = cars.move();
+            results.add(tryResults);
             tryCount.race();
         }
+    }
+
+    public String gameResult() {
+        return results.gameResult();
     }
 }

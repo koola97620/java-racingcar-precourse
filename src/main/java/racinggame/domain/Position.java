@@ -30,6 +30,10 @@ public class Position {
         return Position.of(position + MOVE_ONE);
     }
 
+    public int getPosition() {
+        return position;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

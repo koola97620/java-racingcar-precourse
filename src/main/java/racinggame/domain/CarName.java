@@ -23,4 +23,8 @@ public class CarName {
             throw new RacingCarException(ErrorCode.CAR_NAME_LENGTH_BOUNDARY_ERROR.getMessage());
         }
     }
+
+    public String getName() {
+        return name;
+    }
 }

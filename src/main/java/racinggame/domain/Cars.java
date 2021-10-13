@@ -2,6 +2,7 @@ package racinggame.domain;
 
 import racinggame.util.ValidUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
@@ -21,10 +22,11 @@ public class Cars {
         ValidUtils.nullOrEmpty(carNames);
     }
 
-    public void move() {
+    public TryResults move() {
+        List<TryResult> tryResults = new ArrayList<>();
         for (Car car : cars) {
-            car.move(new RandomMovable());
+            tryResults.add(car.move(new RandomMovable()));
         }
-
+        return TryResults.of(tryResults);
     }
 }
