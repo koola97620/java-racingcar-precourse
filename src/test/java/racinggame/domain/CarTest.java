@@ -1,11 +1,13 @@
 package racinggame.domain;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 import racinggame.exception.RacingCarException;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class CarTest {
@@ -26,6 +28,24 @@ class CarTest {
         assertThatThrownBy(() -> Car.of(input))
                 .isInstanceOf(RacingCarException.class)
                 .hasMessageContaining("[ERROR] 입력값이 null 또는 공백이 되면 안됩니다.");
+    }
+
+    @DisplayName("자동차가 움직이는 경우")
+    @ParameterizedTest
+    @ValueSource(ints = {4,5,6,7,8,9})
+    void move(int input) {
+        Car car = Car.of("pobi");
+        car.move(input);
+        assertThat(car.getPosition()).isEqualTo(Position.of(1));
+    }
+
+    @DisplayName("자동차가 안움직이는 경우")
+    @ParameterizedTest
+    @ValueSource(ints = {1,2,3})
+    void notMove(int input) {
+        Car car = Car.of("pobi");
+        car.move(input);
+        assertThat(car.getPosition()).isEqualTo(Position.of(0));
     }
 
 }

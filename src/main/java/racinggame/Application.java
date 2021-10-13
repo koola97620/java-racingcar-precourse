@@ -1,15 +1,15 @@
 package racinggame;
 
 import racinggame.domain.Cars;
+import racinggame.domain.RacingGame;
+import racinggame.domain.TryCount;
 import racinggame.view.InputView;
 
 public class Application {
     public static void main(String[] args) {
         InputView inputView = new InputView();
 
-        String carNames = inputView.inputCarNames();
-        Cars cars = Cars.of(carNames);
-        Integer tryCount = inputView.inputTryCount();
-
+        RacingGame racingGame = RacingGame.of(Cars.of(inputView.inputCarNames()));
+        racingGame.raceStart(TryCount.of(inputView.inputTryCount()));
     }
 }
