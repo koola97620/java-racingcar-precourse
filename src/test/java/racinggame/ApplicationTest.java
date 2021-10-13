@@ -32,6 +32,14 @@ public class ApplicationTest extends NSTest {
         });
     }
 
+    @Test
+    void 시도회수_예외_처리() {
+        assertSimpleTest(() -> {
+            runNoLineFound("pobi,java", "0");
+            verify(ERROR_MESSAGE, "시도 회수는 0보다 커야 합니다.");
+        });
+    }
+
     @AfterEach
     void tearDown() {
         outputStandard();

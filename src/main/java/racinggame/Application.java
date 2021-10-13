@@ -33,7 +33,7 @@ public class Application {
     }
 
     private static boolean isCompletedGame(RacingGame racingGame) {
-        return racingGame != null;
+        return racingGame != null && racingGame.isCompletedGame();
     }
 
 }
