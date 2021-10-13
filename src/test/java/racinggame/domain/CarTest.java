@@ -31,20 +31,18 @@ class CarTest {
     }
 
     @DisplayName("자동차가 움직이는 경우")
-    @ParameterizedTest
-    @ValueSource(ints = {4,5,6,7,8,9})
-    void move(int input) {
+    @Test
+    void move() {
         Car car = Car.of("pobi");
-        car.move(input);
+        car.move( () -> true);
         assertThat(car.getPosition()).isEqualTo(Position.of(1));
     }
 
     @DisplayName("자동차가 안움직이는 경우")
-    @ParameterizedTest
-    @ValueSource(ints = {1,2,3})
-    void notMove(int input) {
+    @Test
+    void notMove() {
         Car car = Car.of("pobi");
-        car.move(input);
+        car.move( () -> false);
         assertThat(car.getPosition()).isEqualTo(Position.of(0));
     }
 

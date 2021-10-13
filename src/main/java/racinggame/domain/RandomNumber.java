@@ -6,6 +6,7 @@ import racinggame.exception.RacingCarException;
 public class RandomNumber {
     private static final int MIN_NUMBER = 0;
     private static final int MAX_NUMBER = 9;
+    private static final int MOVING_CONDITION_NUMBER = 4;
 
     private int number;
 
@@ -22,5 +23,9 @@ public class RandomNumber {
         if (number < MIN_NUMBER || number > MAX_NUMBER) {
             throw new RacingCarException(ErrorCode.RANDOM_NUMBER_BOUNDARY_ERROR.getMessage());
         }
+    }
+
+    public boolean isMovable() {
+        return number >= MOVING_CONDITION_NUMBER;
     }
 }

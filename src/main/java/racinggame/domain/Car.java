@@ -24,8 +24,8 @@ public class Car {
         ValidUtils.nullOrEmpty(carName);
     }
 
-    public void move(int number) {
-        if (number >= 4) {
+    public void move(MovingStrategy movable) {
+        if (movable.movable()) {
             this.position = position.move();
         }
     }
