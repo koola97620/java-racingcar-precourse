@@ -19,11 +19,8 @@ public class Results {
     public String gameResult() {
         StringBuilder builder = new StringBuilder();
         builder.append("실행결과").append("\n");
-
         for (TryResults tryResults : tryResultsList) {
-            builder
-                    .append(tryResults.result())
-                    .append("\n");
+            builder.append(tryResults.result()).append("\n");
         }
         builder.append(String.format(WINNER_MESSAGE, findWinners()));
         return builder.toString();
