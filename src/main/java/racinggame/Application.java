@@ -9,6 +9,7 @@ public class Application {
 
         String carNames = inputView.inputCarNames();
         Cars cars = Cars.of(carNames);
+        Integer tryCount = inputView.inputTryCount();
 
     }
 }
